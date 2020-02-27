@@ -1,0 +1,24 @@
+.List{
+    border-radius: 4px;
+    background: #2B2A2B;
+    width: 100%;
+
+}
+.List ul{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    overflow: hidden;
+
+}
+.List ul li{
+    display: block;
+    padding: 10px 15px;
+    color: #fff;
+    border-bottom: 1px solid #fff;
+}
+.List ul li:last-child{
+    border-bottom: 0;
+}

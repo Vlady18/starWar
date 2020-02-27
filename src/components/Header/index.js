@@ -5,7 +5,6 @@ import './Header.css'
 export const Header = () =>{
     return(
         <header>
-            <div className="container">
                 <div className="top_line">
                     <a href="/" className="logo">
                         <h1>Star DB</h1>
@@ -17,7 +16,6 @@ export const Header = () =>{
                             <li className={'nav-item'}><NavLink className={'nav-link'} to="/starships">Starhips</NavLink></li>
                         </ul>
                     </nav>
-                </div>
             </div>
         </header>
     )

@@ -1,3 +1,10 @@
 .top_line{
     display: flex;
+    align-items: center;
+}
+a.logo{
+    text-decoration: none;
+}
+.nav a{
+    color: #fff;
 }

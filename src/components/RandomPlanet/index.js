@@ -1,20 +1,69 @@
 import React from "react";
 import './RandomPlanet.css'
-const RandomPlanet = ()=>{
-    return(
-        <div className='random_block'>
-            <div className="image">
-                <img src="https://image.shutterstock.com/image-illustration/earth-space-satellite-image-planet-600w-1036735336.jpg" alt="img"/>
+import API from "../../API/API";
+import {Loader} from "../Loader";
+import {Error} from "../Error";
+
+class RandomPlanet extends React.Component {
+    constructor() {
+        super();
+        this.updatePlanet();
+    }
+
+    state = {
+        planet: {},
+        loader: true,
+        error: false
+    }
+    swapi = new API();
+
+    updatePlanet() {
+        const id = Math.floor(Math.random() * 25 + 2);
+        this.swapi.getPlanet(id).then((planet) => {
+            this.setState({
+                planet,
+                loader: false
+            })
+        }).catch(() => {
+            this.setState({
+                error: true,
+                loader: false
+            })
+        })
+    }
+
+    render() {
+        const {population, rotation, diametr, name, id} = this.state.planet;
+        return (
+            <div className='random_block'>
+                {
+                    this.state.loader
+                        ?
+                        <Loader/>
+                        :
+                        this.state.error
+                            ?
+                            <Error/>
+                            :
+                            <>
+                                <div className="image">
+                                    <img
+                                        src={`https://starwars-visualguide.com/assets/img/planets/${id}.jpg`}
+                                        alt="img"/>
+                                </div>
+                                <div className="info_block">
+                                    <h4>{name}</h4>
+                                    <ul>
+                                        <li>Population {population}</li>
+                                        <li>Rotation Period {rotation}</li>
+                                        <li>Diametr {diametr}</li>
+                                    </ul>
+                                </div>
+                            </>
+                }
             </div>
-            <div className="info_block">
-                <h4>Mustafar</h4>
-                <ul>
-                    <li>Population 2000</li>
-                    <li>Rotation Period 36</li>
-                    <li>Diametr 4200</li>
-                </ul>
-            </div>
-        </div>
-    )
+        )
+    }
 }
+
 export default RandomPlanet

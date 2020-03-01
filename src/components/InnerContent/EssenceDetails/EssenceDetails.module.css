@@ -1,0 +1,14 @@
+.EssenceDetails{
+    display: flex;
+    border-radius: 4px;
+    background: #2B2A2B;
+    width: 100%;;
+}
+.EssenceDetails .image{
+    margin-right: 15px;
+}
+.EssenceDetails ul{
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}

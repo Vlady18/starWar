@@ -1,6 +1,7 @@
 import React from 'react';
 import classes from './InnerContent.module.css'
 import List from "./ListEssence";
+import {EssenceDetails} from "./EssenceDetails";
 
 
 export const MainContent = ()=>{
@@ -11,7 +12,7 @@ export const MainContent = ()=>{
                     <List />
                 </div>
                 <div className="col-6">
-                    <List />
+                    <EssenceDetails />
                 </div>
             </div>
         </div>

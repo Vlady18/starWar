@@ -16,12 +16,13 @@ class API {
         const res = await this.getResources(`/planets/${id}`);
         return this._transformData(res);
     }
-    getAllPeople(){
-        const res = this.getResources('/people');
-        return res.result.map((pl)=>this._transformData(pl));
+    async getAllPeople(){
+        const res = await this.getResources('/people');
+        return res.results.map((pl)=>this._transformData(pl));
     }
-    getPeople(id){
-        return this.getResources(`/people/${id}`);
+    async getPeople(id){
+         const res = await this.getResources(`/people/${id}`);
+         return res;
     }
     getAllStarships(){
         const res =  this.getResources(`/starships`);

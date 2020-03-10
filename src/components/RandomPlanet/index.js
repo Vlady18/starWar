@@ -5,19 +5,21 @@ import {Loader} from "../Loader";
 import {Error} from "../Error";
 
 class RandomPlanet extends React.Component {
-    constructor() {
-        super();
-        this.updatePlanet();
-    }
-
     state = {
         planet: {},
         loader: true,
         error: false
     }
     swapi = new API();
+    componentDidMount() {
+        // setInterval(() => this.updatePlanet(), 3000);
+        this.interval = setInterval(this.updatePlanet, 3000);
+    }
+    componentWillUnmount() {
+        clearInterval(this.interval);
+    }
 
-    updatePlanet() {
+    updatePlanet = () => {
         const id = Math.floor(Math.random() * 25 + 2);
         this.swapi.getPlanet(id).then((planet) => {
             this.setState({
@@ -31,6 +33,7 @@ class RandomPlanet extends React.Component {
             })
         })
     }
+
 
     render() {
         const {population, rotation, diametr, name, id} = this.state.planet;

@@ -4,8 +4,19 @@ import {Switch, Route} from 'react-router-dom'
 import RandomPlanet from "../RandomPlanet";
 import List from "../InnerContent/ListEssence";
 import {MainContent} from "../InnerContent";
+import API from "../../API/API";
 
 class App extends Component{
+    state={
+        currentPeopleId: 5
+    }
+
+    changeCurrentPeopleId = (id) =>{
+        this.setState({
+            currentPeopleId: id
+        })
+    }
+
     render(){
         return(
             <div>
@@ -24,7 +35,10 @@ class App extends Component{
                             <div className="">Planet</div>
                         </Route>
                     </Switch>
-                    <MainContent />
+                    <MainContent
+                        changeCurrentPeopleId={this.changeCurrentPeopleId}
+                        currentPeopleId={this.state.currentPeopleId}
+                    />
                 </div>
             </div>
         )
